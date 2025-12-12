@@ -1,6 +1,6 @@
 import os
 
-with open ("example.txt", "r") as file:
+with open ("input.txt", "r") as file:
     
     # Idee: Ich nehme mir immer 3 Zeilen. Wenn ich die mittlere Zeile überprüfen will, muss ich zum Beispiel am Index 2 folgende Zeichen prüfen:
     
@@ -24,24 +24,25 @@ with open ("example.txt", "r") as file:
         if lineLength == None:
             lineLength = len(line)+2
     
-    print("\n")
     
     prevLine = "."*lineLength
-    
+    input.append(prevLine)
     output = 0
+    
+    print("\n")
     
     for index, object in enumerate(input):
         
         # Randfall am Ende abfangen
-        if index < docLength:
+        if index <= docLength:
             nextLine = input[index+1]
         else:
             nextLine = prevLine
     
-        
+        print(object)
         for index, char in enumerate(object):
         
-            print(index)
+            #print(index)
             adjCounter = 0 
             
             if char == "@":
@@ -62,10 +63,12 @@ with open ("example.txt", "r") as file:
                     if nextLine[k] == "@":
                         adjCounter+=1
                 
-                if adjCounter <= 4:
+                if adjCounter < 4:
                     output += 1
-                    print("Einmal ziehen bitte: ", output)
-                    
+                    print(output)         
+                     
+        prevLine = object        
+                  
 print(output)
                     
                 
